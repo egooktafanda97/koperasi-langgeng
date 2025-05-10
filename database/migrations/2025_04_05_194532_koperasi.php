@@ -7,10 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
+        Schema::create('kategori_usaha', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_kategori', 100);
+            $table->text('deskripsi')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('nama_unit', 100);
-            $table->string('jenis_usaha', 100)->nullable();
+            $table->foreignId('kategori_usaha_id')->nullable()->constrained('kategori_usaha')->onDelete('set null');
             $table->string('penanggung_jawab', 100)->nullable();
             $table->string('phone', 20)->nullable();
             $table->text('alamat')->nullable();
@@ -18,11 +25,7 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('kategori_usaha', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_kategori', 100);
-            $table->text('deskripsi')->nullable();
-        });
+
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -41,9 +44,7 @@ return new class extends Migration {
             $table->foreignId('unit_id')->constrained('units')->onDelete('cascade');
             $table->string('nama_produk', 100);
             $table->enum('jenis_produk', ['barang', 'jasa']);
-            $table->bigInteger('harga');
             $table->string('satuan', 50)->nullable();
-            $table->integer('stok')->default(0);
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });
@@ -51,12 +52,12 @@ return new class extends Migration {
         Schema::create('laporan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('unit_id')->constrained('units')->onDelete('cascade');
-            $table->integer('bulan');
-            $table->integer('tahun');
+            $table->string('bulan', 10);
             $table->string('file_laporan', 255)->nullable();
             $table->bigInteger('pendapatan')->default(0);
             $table->bigInteger('pengeluaran')->default(0);
             $table->enum('status', ['menunggu', 'diterima', 'ditolak'])->default('menunggu');
+            $table->string('keterangan')->nullable();
             $table->text('catatan_admin')->nullable();
             $table->timestamps();
         });

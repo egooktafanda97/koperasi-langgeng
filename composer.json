@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.6",
+        "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-route-attributes": "^1.20"
     },
     "require-dev": {

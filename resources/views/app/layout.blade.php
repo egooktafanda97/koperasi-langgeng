@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Connect Plus</title>
+    <title>...</title>
     <!-- plugins:css -->
     <link href="{{ asset('admin') }}/assets/vendors/mdi/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="{{ asset('admin') }}/assets/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -154,6 +154,15 @@
         .form-group {
             margin-bottom: 1rem;
         }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #6c757d !important;
+            /* abu-abu elegan */
+            opacity: 1 !important;
+            /* 1 = 100% terlihat */
+            font-weight: 500 !important;
+        }
     </style>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
@@ -190,22 +199,122 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item nav-category">Main</li>
+
+                    {{-- Dashboard - semua role --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('dashboard.index') }}">
                             <span class="icon-bg"><i class="mdi mdi-view-dashboard menu-icon"></i></span>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
 
+                    {{-- Menu untuk ADMIN --}}
+                    @if (auth()->user()->role == 'admin')
+                        <li class="nav-item nav-category">Manajemen</li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('unit_usaha.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-domain menu-icon"></i></span>
+                                <span class="menu-title">Unit Usaha</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('kategori_usaha.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-folder-multiple menu-icon"></i></span>
+                                <span class="menu-title">Kategori Usaha</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('produk_unit.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-cube-outline menu-icon"></i></span>
+                                <span class="menu-title">Produk Unit</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('laporan.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-file-document-box menu-icon"></i></span>
+                                <span class="menu-title">Laporan Masuk</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('laporan.rekapitulasi') }}">
+                                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
+                                <span class="menu-title">Rekapitulasi</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pengumuman.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-bullhorn menu-icon"></i></span>
+                                <span class="menu-title">Pengumuman</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('log-activity.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-history menu-icon"></i></span>
+                                <span class="menu-title">Log Aktivitas</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    {{-- Menu untuk UNIT --}}
+                    @if (auth()->user()->role == 'unit')
+                        <li class="nav-item nav-category">Unit Usaha</li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('produk_saya.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                                <span class="menu-title">Produk Saya</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('laporan-me.index') }}">
+                                <span class="icon-bg"><i class="mdi mdi-file-chart menu-icon"></i></span>
+                                <span class="menu-title">Laporan Saya</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pengumuman.show') }}">
+                                <span class="icon-bg"><i class="mdi mdi-bullhorn menu-icon"></i></span>
+                                <span class="menu-title">Pengumuman</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    {{-- Setting - semua role --}}
+                    <li class="nav-item nav-category">Pengaturan</li>
+                    @if (auth()->user()->role == 'unit')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.data') }}">
+                                <span class="icon-bg">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <span class="menu-title">User</span>
+                            </a>
+                        </li>
+                    @endif
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="icon-bg"><i class="mdi mdi-account-settings menu-icon"></i></span>
+                            <span class="menu-title">Profil Saya</span>
+                        </a>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <span class="icon-bg"><i class="mdi mdi-cog menu-icon"></i></span>
-                            <span class="menu-title">Setting</span>
+                            <span class="icon-bg"><i class="mdi mdi-logout menu-icon"></i></span>
+                            <span class="menu-title">Keluar</span>
                         </a>
                     </li>
                 </ul>
             </nav>
+
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper !p-1 flex flex-1">
@@ -236,6 +345,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="{{ asset('js/table.js') }}"></script>
     <script>
+        function formatRupiah(angka, prefix = 'Rp') {
+            let numberString = angka.toString().replace(/[^,\d]/g, '');
+            let split = numberString.split(',');
+            let sisa = split[0].length % 3;
+            let rupiah = split[0].substr(0, sisa);
+            let ribuan = split[0].substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                let separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix ? prefix + ' ' + rupiah : rupiah;
+        }
+
         function deleted(url) {
             Swal.fire({
                 title: "Are you sure?",

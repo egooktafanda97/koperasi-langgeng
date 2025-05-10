@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Rekapitulasi extends Model
 {
     use HasFactory;
-
+    protected static $logName = 'rekapitulasi';
+    protected static $logFillable = true;
+    protected static $logOnlyDirty = true; // hanya field yang berubah
     protected $fillable = [
         'bulan',
         'tahun',
