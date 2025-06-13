@@ -46,7 +46,7 @@
             <a class="logo d-flex align-items-center me-auto" href="index.html">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img alt="" src="assets/img/logo.png"> -->
-                <h1 class="sitename">eNno</h1>
+                <h1 class="sitename">Koperasi Desa Langgeng</h1>
             </a>
 
             <nav class="navmenu" id="navmenu">
@@ -72,18 +72,12 @@
                 <div class="row gy-4">
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center"
                         data-aos="fade-up">
-                        <h1>Elegant and creative solutions</h1>
-                        <p>We are team of talented designers making websites with Bootstrap</p>
-                        <div class="d-flex">
-                            <a class="btn-get-started" href="#about">Get Started</a>
-                            <a class="glightbox btn-watch-video d-flex align-items-center"
-                                href="https://www.youtube.com/watch?v=Y7f98aduVJ8"><i
-                                    class="bi bi-play-circle"></i><span>Watch Video</span></a>
-                        </div>
+                        <h1>Koperasi Produsen Unit Desa Langgeng</h1>
+                        <p>Marsawa Kecamatan Sentajo Raya Kabupaten Kuantan Singingi</p>
+
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos-delay="100" data-aos="zoom-out">
-                        <img alt="" class="img-fluid animated"
-                            src="{{ asset('web') }}/assets/img/hero-img.png">
+                        <img alt="" class="img-fluid animated" src="{{ asset('IMG_8999.JPG') }}">
                     </div>
                 </div>
             </div>
@@ -92,35 +86,21 @@
 
         <!-- Featured Services Section -->
         <section class="featured-services section" id="featured-services">
-
+            @php
+                $pengumumaan = \App\Models\Pengumuman::orderBy('id', 'desc')->first();
+            @endphp
             <div class="container">
 
                 <div class="row gy-4">
 
-                    <div class="col-lg-4 d-flex" data-aos-delay="100" data-aos="fade-up">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-activity icon"></i></div>
-                            <h4><a class="stretched-link" href="">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 d-flex" data-aos-delay="200" data-aos="fade-up">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                            <h4><a class="stretched-link" href="">Sed ut perspici</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 d-flex" data-aos-delay="300" data-aos="fade-up">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                            <h4><a class="stretched-link" href="">Magni Dolores</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
+                    <h2>Pengumuman Terbaru</h2>
+                    <h4>{{ $pengumumaan->judul }}</h4>
+                    <div><span>{{ $pengumumaan->created_at }}</span></div>
+                    <div class="card p-2">
+                        <p>
+                            {!! $pengumumaan->isi !!}
+                        </p>
+                    </div>
                 </div>
 
             </div>
@@ -132,9 +112,9 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <span>About Us<br></span>
-                <h2>About</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <span>Tentang<br></span>
+                <h2>Tentang</h2>
+                <p>Tentang Koperasi Produsen Unit Desa Langgeng</p>
             </div><!-- End Section Title -->
 
             <div class="container">
@@ -142,37 +122,82 @@
                 <div class="row gy-4">
                     <div class="col-lg-6 position-relative align-self-start" data-aos-delay="100" data-aos="fade-up">
                         <img alt="" class="img-fluid" src="assets/img/about.png">
-                        <a class="glightbox pulsating-play-btn"
-                            href="https://www.youtube.com/watch?v=Y7f98aduVJ8"></a>
+                        <a class="glightbox pulsating-play-btn" href="https://www.youtube.com/watch?v=Y7f98aduVJ8"></a>
                     </div>
                     <div class="col-lg-6 content" data-aos-delay="200" data-aos="fade-up">
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                        <h3>Sejarah</h3>
                         <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            Koperasi Produsen Unit Desa Langgeng berdiri pada tahun 1980. Berdirinya Koperasi Produsen
+                            Unit Desa Langgeng dilatarbelakangi oleh kondisi perekonomian masyarakat transmigrasi pada
+                            waktu itu yang belum stabil dan penduduknya yang berasal dari berbagai daerah dengan adat
+                            istiadat yang berbeda-beda. Menyadari bahwa masyarakat transmigrasi tidak seharusnya
+                            menggantungkan harapan hidupnya untuk memperoleh kebutuhan sehari-hari dari bantuan
+                            pemerintah, maka masyarakat berinisiatif membentuk suatu Lembaga perekonomian pedesaan yang
+                            berbentuk koperasi. Melalui koperasi itulah masyarakat diharapkan dapat memperoleh manfaat
+                            yang lebih besar terutama dalam memenuhi kebutuhan sehari-hari. Selain itu, diharapkan
+                            kemampuan ekonomi masyarakat pedesaan dapat semakin meningkat
+
+                        </p>
+                        <h3>Visi & Misi</h3>
+                        <p>
+                            <strong> Menjadi Koperasi Mandiri yang dapat mensejahterakan anggota dan masyarakat
+                                sekitarnya</strong>
                         </p>
                         <ul>
-                            <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.</span></li>
-                            <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                    voluptate velit.</span></li>
-                            <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                                    storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                            <li>Melaksanakan ketentuan-ketentuan pemerintah dalam menunjang perekonomian masyarakat
+                                pedesaan</li>
+                            <li>Memfasilitasi anggota dalam memperoleh keuntungan pribadi</li>
+                            <li>Menghindari tengkulak-tengkulak yang bertujuan untuk memperoleh keuntungan pribadi</li>
+                            <li>Menjaga kestabilan harga dan kondisi perekonomian masyarakat anggota</li>
+                            <li>Membantu pemasaran hasil produksi milik anggota</li>
                         </ul>
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident
-                        </p>
+
                     </div>
                 </div>
 
             </div>
 
         </section><!-- /About Section -->
+
+        <!-- Portfolio Section -->
+        <section class="portfolio section" id="portfolio">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Kegiatan Koperasi</span>
+                <h2>Kegiatan Koperasi</h2>
+                <p>
+                    Kegiatan Koperasi Produsen Unit Desa Langgeng meliputi berbagai macam usaha yang bertujuan untuk
+                    meningkatkan kesejahteraan anggota dan masyarakat sekitar. Beberapa kegiatan tersebut antara lain
+                    adalah pengadaan barang kebutuhan pokok, penjualan hasil pertanian, dan penyediaan layanan simpan
+                    pinjam bagi anggota koperasi.
+                </p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+                    <ul class="portfolio-filters isotope-filters" data-aos-delay="100" data-aos="fade-up">
+                        <li class="filter-active" data-filter="*">-</li>
+                    </ul><!-- End Portfolio Filters -->
+
+                    <div class="row gy-4 isotope-container" data-aos-delay="200" data-aos="fade-up">
+                        @foreach ($listKegiatan as $item)
+                            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                                <img alt="" class="img-fluid" src="{{ asset('img-kegiatan/' . $item) }}">
+                                <div class="portfolio-info">
+                                    <h4>Kegiatan</h4>
+                                    <a class="glightbox preview-link" data-gallery="portfolio-gallery-app"
+                                        href="{{ asset('web/assets/img/portfolio/app-1.jpg') }}" title="App 1"><i
+                                            class="bi bi-zoom-in"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div><!-- End Portfolio Container -->
+                </div>
+            </div>
+        </section><!-- /Portfolio Section -->
     </main>
 
     <footer class="footer" id="footer">
