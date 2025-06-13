@@ -198,6 +198,21 @@
                 </div>
             </div>
         </section><!-- /Portfolio Section -->
+
+
+        <section class="portfolio section" id="portfolio">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <span>Struktur Organisasi</span>
+                <h2>Struktur Organisasi</h2>
+
+            </div><!-- End Section Title -->
+
+            <div class="container">
+                <img alt="" src="{{ asset('struktur.png') }}" style="width: 100%">
+            </div>
+        </section>
     </main>
 
     <footer class="footer" id="footer">
